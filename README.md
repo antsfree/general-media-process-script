@@ -21,7 +21,7 @@
 
 4. 视频提取音频：php transcode.php /path/to/source-video.mp4 /path/to/target-audio.mp3 
 
-5. 音频转视频，同理。
+5. 音频转视频，音频转音频，同理。
 ```
 
 ### 🌲🌲 实测支持类型
