@@ -21,6 +21,9 @@ $source_dir       = $argv[1]; // 源文件
 $source_extension = get_extension($source_dir);
 $target_dir       = $argv[2]; // 目标文件
 $target_extension = get_extension($target_dir);
+if ($target_extension == $source_extension) {
+    die("该文件转码后缀类型一致，无需转码。\n");
+}
 
 // 5、加载 php-ffmpeg 扩展
 require 'vendor/autoload.php';
