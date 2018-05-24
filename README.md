@@ -6,22 +6,62 @@
 
 ### 🌏🌏 环境配置要求
 
-> 1. php version > 5.6
+> 1. php > 5.6
 > 2. ffmpeg
 > 3. composer
 
-### 📚📚 使用方法
+### 📚📚 配置及使用方法
+
+配置：
 
 ```
 1. git clone git@github.com:antsfree/general-media-transcode.git
 
 2. cd /path/to/general-media-transcode && composer install
 
-3. 视频转视频：php transcode.php /path/to/source.wmv /path/to/target.mp4 
+```
 
-4. 视频提取音频：php transcode.php /path/to/source-video.mp4 /path/to/target-audio.mp3 
+转码脚本使用(交互模式)：
 
-5. 音频转视频，音频转音频，同理。
+```
+☁  local-transcode [develop] ⚡  php transcode.php
+原媒体文件地址：
+/Users/markxu/Downloads/dou.mp4
+转码后文件地址：
+/Users/markxu/Downloads/dou-1.mp3
+原视频路径: /Users/markxu/Downloads/dou.mp4
+视频时长: 49.7 Seconds
+视频大小: 3.5637 MB
+转码中.. 49% 
+转码中.. 99% 
+转码完成!
+
+说明：
+1. 视频转视频：php transcode.php 
+输入源文件参数：/path/to/source.wmv 
+输入目标文件参数：/path/to/target.mp4 
+
+2. 视频提取音频：php transcode.php 
+输入源文件参数：/path/to/source-video.mp4
+输入目标文件参数：/path/to/target-audio.mp3 
+
+3. 音频转视频，音频转音频，同理。
+
+```
+
+截图脚本使用(交互模式)：
+
+```
+☁  local-transcode [develop] ⚡  php screenshot.php 
+输入原视频地址(回车结束)：
+/Users/markxu/Downloads/dou.mp4
+视频总时长：49.709000
+输入截取的时间点，单位秒(回车结束)：
+40
+截图保存名：
+dou.png
+图片截取成功：/Users/markxu/Downloads/dou.png 
+
 ```
 
 ### 🌲🌲 实测支持类型
