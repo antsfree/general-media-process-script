@@ -18,13 +18,12 @@
 1. git clone git@github.com:antsfree/general-media-transcode.git
 
 2. cd /path/to/general-media-transcode && composer install
-
 ```
 
 转码脚本使用(交互模式)：
 
 ```
-☁  local-transcode [develop] ⚡  php transcode.php
+☁️ local-transcode [develop] ⚡  php transcode.php
 原媒体文件地址：
 /Users/markxu/Downloads/dou.mp4
 转码后文件地址：
@@ -52,7 +51,7 @@
 截图脚本使用(交互模式)：
 
 ```
-☁  local-transcode [develop] ⚡  php screenshot.php 
+☁️ local-transcode [develop] ⚡  php screenshot.php 
 输入原视频地址(回车结束)：
 /Users/markxu/Downloads/dou.mp4
 视频总时长：49.709000
