@@ -1,11 +1,5 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: markxu
- * Date: 2018/5/23
- * Time: 下午5:55
- */
-/**
  * 获取文件后缀
  *
  * @param $file_dir
@@ -86,4 +80,25 @@ function format_duration($duration, $i = 1)
     $duration = number_format($duration, 1);
 
     return $duration . ' ' . $format[$i];
+}
+
+/**
+ * 交互方法（输出展示）
+ *
+ * @param $text
+ *
+ * @return bool|string
+ */
+function input($text)
+{
+    print $text . "\n";
+    $fp    = fopen('php://stdin', 'r');
+    $input = fgets($fp, 1024);
+    fclose($fp);
+    $input = trim($input, "\n");
+    if (!$input) {
+        input($text);
+    }
+
+    return $input;
 }
