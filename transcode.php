@@ -1,11 +1,6 @@
 <?php
 require_once 'init.php';
 
-// 提取 ffmpeg 及 ffprobe
-$ret = get_command_result('which ffmpeg ffprobe');
-if (count($ret) != 2) die("未找到对应可执行程序!\n");
-list($ffmpeg_binaries, $ffprobe_binaries) = $ret;
-
 // 参数处理
 $source_dir       = input("原媒体文件地址："); // 源文件
 $target_dir       = input("转码后文件地址："); // 目标文件
@@ -26,13 +21,7 @@ echo "视频时长: {$duration}\n";
 $size = format_size($video_info['size']);
 echo "视频大小: {$size}\n";
 
-$ffmpeg = FFMpeg\FFMpeg::create([
-    'ffmpeg.binaries'  => $ffmpeg_binaries,
-    'ffprobe.binaries' => $ffprobe_binaries,
-    'timeout'          => 3600, // The timeout for the underlying process
-    'ffmpeg.threads'   => 12,   // The number of threads that FFMpeg should use
-]);
-$video  = $ffmpeg->open($source_dir);
+$video = $ffmpeg->open($source_dir);
 
 // 格式限制
 $extension = [
@@ -51,8 +40,8 @@ $format->on('progress', function ($video, $format, $percentage) {
 });
 
 $format
-    ->setKiloBitrate(1000)// 视频码率
-    ->setAudioChannels(2)// 音频声道
+    ->setKiloBitrate(1000) // 视频码率
+    ->setAudioChannels(2) // 音频声道
     ->setAudioKiloBitrate(256); // 音频码率
 
 // 保存
