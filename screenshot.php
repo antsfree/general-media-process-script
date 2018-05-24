@@ -1,6 +1,5 @@
 <?php
-require "vendor/autoload.php";
-require "./function.php";
+require 'init.php';
 
 // 原媒体文件地址
 $source_dir = input("输入原视频地址(回车结束)：");

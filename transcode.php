@@ -1,35 +1,21 @@
 <?php
-if ($argc != 3) {
-    die('执行错误！示例: php transcode.php /path/to/source.wmv /path/to/target.mp4');
-}
-// 1、检测 PHP 环境
-if (version_compare(PHP_VERSION, '5.3.0', '<')) die('require PHP > 5.3.0 !');
+require_once 'init.php';
 
-// 2、引入帮助函数
-require_once './function.php';
-
-// 3、检测 ffmpeg 和 ffprobe 服务
-$ret = get_command_result('ffmpeg --version');
-if (!strpos($ret[0], 'version')) die('未安装 ffmpeg !');
-$ret = get_command_result('ffprobe --version');
-if (!strpos($ret[0], 'version')) die('未安装 ffprobe !');
-
-// 4、提取 ffmpeg 及 ffprobe
+// 提取 ffmpeg 及 ffprobe
 $ret = get_command_result('which ffmpeg ffprobe');
 if (count($ret) != 2) die("未找到对应可执行程序!\n");
 list($ffmpeg_binaries, $ffprobe_binaries) = $ret;
 
-// 5、参数处理
-$source_dir       = $argv[1]; // 源文件
+// 参数处理
+$source_dir       = input("原媒体文件地址："); // 源文件
+$target_dir       = input("转码后文件地址："); // 目标文件
 $source_extension = get_extension($source_dir);
-$target_dir       = $argv[2]; // 目标文件
 $target_extension = get_extension($target_dir);
 if ($target_extension == $source_extension) {
     die("该文件转码后缀类型一致，无需转码。\n");
 }
 
-// 6、加载 php-ffmpeg 扩展
-require 'vendor/autoload.php';
+// 加载 php-ffmpeg 扩展
 $ffprobe  = FFMpeg\FFProbe::create();
 $is_video = $ffprobe->isValid($source_dir); // returns bool
 if (!$is_video) die('视频格式问题');
@@ -48,7 +34,7 @@ $ffmpeg = FFMpeg\FFMpeg::create([
 ]);
 $video  = $ffmpeg->open($source_dir);
 
-// 7、格式限制
+// 格式限制
 $extension = [
     'avi',
     'wmv',
@@ -69,7 +55,7 @@ $format
     ->setAudioChannels(2)// 音频声道
     ->setAudioKiloBitrate(256); // 音频码率
 
-// 8、保存
+// 保存
 $video->save($format, $target_dir);
 
 die("转码完成!\n");
