@@ -63,6 +63,34 @@ dou.png
 
 ```
 
+视频拆分使用(交互模式)：
+
+```
+☁️ local-transcode [develop] php split.php
+原媒体文件路径：
+/Users/markxu/Downloads/dou.mp4
+视频总时长：49.709000
+输入开始时间点，单位秒(回车结束)：
+20
+输入结束时间点，单位秒(回车结束)：
+40
+拆分后文件存储地址：
+/Users/markxu/Downloads/dou-split.mp4
+转码中.. 22%
+转码中.. 40%
+转码中.. 50%
+转码中.. 58%
+转码中.. 62%
+转码中.. 66%
+转码中.. 71%
+转码中.. 76%
+转码中.. 82%
+转码中.. 86%
+转码中.. 94%
+转码中.. 100%
+拆分成功，文件地址：/Users/markxu/Downloads/dou-split.mp4
+```
+
 ### 🌲🌲 实测支持类型
 
 > 音频：mp3 wav 等
