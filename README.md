@@ -91,6 +91,12 @@ dou.png
 拆分成功，文件地址：/Users/markxu/Downloads/dou-split.mp4
 ```
 
+视频合并使用(交互模式)
+
+```
+TODO
+```
+
 ### 🌲🌲 实测支持类型
 
 > 音频：mp3 wav 等
